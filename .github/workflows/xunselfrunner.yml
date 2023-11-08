@@ -18,5 +18,3 @@ jobs:
           
       - name: Build Clio
         uses: ./.github/actions/build_clio/xunlinuxbuild.yml
-        with:
-          conan_cache_hit: ${{ steps.restore_cache.outputs.conan_cache_hit }}
