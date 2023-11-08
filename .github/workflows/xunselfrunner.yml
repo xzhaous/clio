@@ -1,4 +1,4 @@
-name: Build Clio
+name: Xun clio build
 on:
   schedule:
     - cron:  '30 5,17 * * 1'
