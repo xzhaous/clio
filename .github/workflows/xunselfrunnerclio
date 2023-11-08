@@ -15,7 +15,6 @@ jobs:
 
   build_linux:
     name: Build linux
-    needs: lint
     runs-on: [self-hosted]
     env:
       CCACHE_DIR: /home/xzhao/.ccache
