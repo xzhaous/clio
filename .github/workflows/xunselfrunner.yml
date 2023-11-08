@@ -1,10 +1,7 @@
 name: Build Clio
 on:
-  push:
-    branches: [master, release/*, develop]
-  pull_request:
-    branches: [master, release/*, develop]
-  workflow_dispatch:
+  schedule:
+    - cron:  '30 5,17 * * 1'
 
 jobs:
   lint:
