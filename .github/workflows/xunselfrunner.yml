@@ -4,12 +4,6 @@ on:
     - cron:  '30 5,17 * * 1'
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-
   build_linux:
     name: Build linux
     runs-on: [self-hosted]
