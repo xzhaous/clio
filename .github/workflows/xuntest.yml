@@ -1,8 +1,11 @@
 name: Xun clio build
 on:
-  schedule:
-    - cron:  '30 5,17 * * 1'
-
+ push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+  workflow_dispatch:
+  
 jobs:
   build_linux:
     name: Build linux
