@@ -1,9 +1,9 @@
 name: Xun clio build
 on:
- push:
-    branches: [develop]
+  push:
+    branches: [master, release/*, develop]
   pull_request:
-    branches: [develop]
+    branches: [master, release/*, develop]
   workflow_dispatch:
   
 jobs:
