@@ -11,7 +11,7 @@ inputs:
 runs:
   using: composite
   steps:
-       - name: Get number of threads on Linux
+    - name: Get number of threads on Linux
       id: linux_threads
       if: ${{ runner.os == 'Linux' }}
       shell: bash
