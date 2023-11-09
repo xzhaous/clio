@@ -20,4 +20,4 @@ jobs:
           ref: develop
           
       - name: Build Clio
-        uses: ./.github/actions/build_clio
+        uses: ./.github/actions/testbuild
