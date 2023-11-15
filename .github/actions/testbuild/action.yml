@@ -17,7 +17,7 @@ runs:
       shell: bash
       run: echo "num=$(($(nproc) - 2))" >> $GITHUB_OUTPUT
       
-    - name:Remove few lines CMake/Settings.cmake
+    - name: Remove few lines CMake/Settings.cmake
       shell: bash
       run: sed -i "22,29d" CMake/Settings.cmake
 
