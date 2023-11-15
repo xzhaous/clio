@@ -16,6 +16,10 @@ runs:
       if: ${{ runner.os == 'Linux' }}
       shell: bash
       run: echo "num=$(($(nproc) - 2))" >> $GITHUB_OUTPUT
+      
+    - name:Remove few lines CMake/Settings.cmake
+      shell: bash
+      run: sed -i "22,29d" CMake/Settings.cmake
 
     - name: Build Clio
       shell: bash
@@ -26,6 +30,6 @@ runs:
         mkdir -p build
         cd build
         threads_num=${{ steps.mac_threads.outputs.num || steps.linux_threads.outputs.num }}
-        conan install .. -of . -b $BUILD_OPTION -s build_type=Release 
+        conan install .. -of . -b $BUILD_OPTION -s build_type=Release --profile gcc11
         cmake -DCMAKE_TOOLCHAIN_FILE:FILEPATH=build/generators/conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release .. 
         cmake --build . --parallel $threads_num
