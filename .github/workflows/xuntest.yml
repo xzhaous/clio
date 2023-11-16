@@ -21,3 +21,8 @@ jobs:
           
       - name: Build Clio
         uses: ./.github/actions/testbuild
+
+      - name: Deploy Clio 
+        run: |
+             cd /home/xzhao/deploy
+             bash deployclioonly.sh testclioboxes /space/clio/clio/build/clio_server
