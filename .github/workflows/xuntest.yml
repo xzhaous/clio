@@ -1,10 +1,39 @@
 name: Xun clio build
 on:
-  push:
-    branches: [master, release/*, develop]
-  pull_request:
-    branches: [master, release/*, develop]
   workflow_dispatch:
+    inputs:
+      release_deploy:
+        description: "standard release no build"
+        type: choice
+        options:
+        - "no"
+        - "yes"
+      branch:
+        description: 'Branch'
+        type: string
+      commit:
+        description: 'Commit ID'
+        type: string
+      release_tag:
+        description: 'release tag'
+        required: true
+        type: string
+      environment:
+        description: 'evnvironment targeting'
+        type: choice
+        options:
+        - prod
+        - perf
+        - dev
+      clio_config_version:
+        description: 'clio config version'
+        type: string
+      wait_for_clio_cache_full:
+        description: 'wait for clio full cache'
+        type: choice
+        options:
+        - "no"
+        - "yes"
   
 jobs:
   build_linux:
