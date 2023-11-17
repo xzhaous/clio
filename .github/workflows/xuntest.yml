@@ -54,4 +54,4 @@ jobs:
       - name: Deploy Clio 
         run: |
              cd /home/xzhao/deploy
-             bash deployclioonly.sh testclioboxes /space/clio/clio/build/clio_server
+             bash deployclioonly.sh newclioboxes /space/clio/clio/build/clio_server
