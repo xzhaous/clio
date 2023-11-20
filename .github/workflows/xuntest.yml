@@ -54,12 +54,12 @@ jobs:
 
 
   build_clio_config:
-    name: Build Clio
+    name: Build Clio config
     runs-on: [self-hosted]
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: ripple/clio-configs
-          path: clio-configs
+          repository: ripple/clio-configs.git
+          path: /space/clio-configs
           ref: ${{ github.event.inputs.clio_config_branch ||  github.event.inputs.clio_config_commit }}
           fetch-depth: 0  
