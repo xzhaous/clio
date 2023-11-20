@@ -25,15 +25,11 @@ on:
         - prod
         - perf
         - dev
-      clio_config_version:
-        description: 'clio config version'
+      clio_config_branch:
+        description: 'clio config branch'
         type: string
-      wait_for_clio_cache_full:
-        description: 'wait for clio full cache'
-        type: choice
-        options:
-        - "no"
-        - "yes"
+      clio_config_commit:
+        description: 'clio config commit'
   
 jobs:
   build_linux:
@@ -55,3 +51,15 @@ jobs:
         run: |
              cd /home/xzhao/deploy
              bash deployclioonly.sh newclioboxes /space/clio/clio/build/clio_server
+
+
+  build_clio_config:
+    name: Build Clio
+    runs-on: [self-hosted]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: rippled/clio-config
+          path: clio-config
+          ref: ${{ github.event.inputs.clio_config_branch ||  github.event.inputs.clio_config_commit }}
+          fetch-depth: 0  
