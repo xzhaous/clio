@@ -30,6 +30,9 @@ on:
         type: string
       clio_config_commit:
         description: 'clio config commit'
+defaults:
+  run:
+    working-directory: /space
   
 jobs:
   build_linux:
@@ -38,9 +41,6 @@ jobs:
     env:
       CCACHE_DIR: /home/xzhao/.ccache
       CONAN_USER_HOME: /home/xzhao
-    defaults:
-      run:
-        working-directory: /space
     steps:
       - name: Get Clio
         uses: actions/checkout@v4
