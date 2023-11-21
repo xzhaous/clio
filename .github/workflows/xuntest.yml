@@ -38,6 +38,9 @@ jobs:
     env:
       CCACHE_DIR: /home/xzhao/.ccache
       CONAN_USER_HOME: /home/xzhao
+    defaults:
+      run:
+        working-directory: /space
     steps:
       - name: Get Clio
         uses: actions/checkout@v4
