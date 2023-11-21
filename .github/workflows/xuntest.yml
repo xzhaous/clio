@@ -49,10 +49,12 @@ jobs:
 
           
       - name: Remove few lines CMake/Settings.cmake
+        working-directory: /space/clio/clio
         shell: bash
         run: sed -i "22,29d" CMake/Settings.cmake
 
       - name: Build Clio
+        working-directory: /space/clio/clio
         shell: bash
         env:
           BUILD_OPTION: "${{ inputs.conan_cache_hit == 'true' && 'missing' || '' }}"
