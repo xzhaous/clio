@@ -58,7 +58,7 @@ jobs:
     steps:
       - name: create directory
         run: | 
-          mkdir -p clio-configs
+          mkdir -p /space/clio/clio/clio-configs
           
       - uses: actions/checkout@v4
         with:
