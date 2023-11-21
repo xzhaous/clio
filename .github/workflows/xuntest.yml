@@ -46,7 +46,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: develop
-          path: clio
+
           
       - name: Remove few lines CMake/Settings.cmake
         shell: bash
