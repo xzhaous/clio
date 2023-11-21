@@ -45,8 +45,22 @@ jobs:
           ref: develop
           path: clio
           
+      - name: Remove few lines CMake/Settings.cmake
+        shell: bash
+        run: sed -i "22,29d" CMake/Settings.cmake
+
       - name: Build Clio
-        uses: ./.github/actions/testbuild
+        shell: bash
+        env:
+          BUILD_OPTION: "${{ inputs.conan_cache_hit == 'true' && 'missing' || '' }}"
+          LINT: "${{ runner.os == 'Linux' && 'True' || 'False' }}"
+        run: |
+             mkdir -p build
+             cd build
+             threads_num=${{ steps.mac_threads.outputs.num || steps.linux_threads.outputs.num }}
+             conan install ..  -s build_type=Release --profile gcc11
+             cmake -DCMAKE_TOOLCHAIN_FILE:FILEPATH=build/generators/conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release .. 
+             cmake --build . --parallel 4
 
       - name: Deploy Clio 
         run: |
