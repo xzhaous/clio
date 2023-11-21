@@ -58,11 +58,11 @@ jobs:
     steps:
       - name: create directory
         run: | 
-          mkdir -p /space/clio/clio/clio-configs
+          mkdir -p /space/clio/clio-configs
           
       - uses: actions/checkout@v4
         with:
           repository: ripple/clio-configs
-          path: clio-configs
+          path: /space/clio/clio-configs
           ref: ${{ github.event.inputs.clio_config_branch ||  github.event.inputs.clio_config_commit }}
 
