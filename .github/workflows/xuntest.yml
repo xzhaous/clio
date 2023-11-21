@@ -56,8 +56,12 @@ jobs:
     name: Build Clio config
     runs-on: [self-hosted]
     steps:
-      - uses: actions/checkout@v3
+      - name: create directory
+        run: | 
+          mkdir -p clio-configs
+          
+      - uses: actions/checkout@v4
         with:
           repository: ripple/clio-configs.git
           ref: ${{ github.event.inputs.clio_config_branch ||  github.event.inputs.clio_config_commit }}
-          fetch-depth: 0  
+
