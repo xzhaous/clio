@@ -52,3 +52,13 @@ jobs:
              cd /home/xzhao/deploy
              bash deployclioonly.sh newclioboxes /space/clio/clio/build/clio_server
 
+  build_clio_config:
+    name: Build Clio config
+    runs-on: [self-hosted]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: ripple/clio-configs.git
+          path: clio-configs
+          ref: ${{ github.event.inputs.clio_config_branch ||  github.event.inputs.clio_config_commit }}
+          fetch-depth: 0  
