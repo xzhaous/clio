@@ -81,4 +81,5 @@ jobs:
           repository: ripple/clio-configs.git
           path: clio-configs
           ref: ${{ github.event.inputs.clio_config_branch ||  github.event.inputs.clio_config_commit }}
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
