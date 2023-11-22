@@ -63,7 +63,7 @@ jobs:
              mkdir -p build
              cd build
              threads_num=${{ steps.mac_threads.outputs.num || steps.linux_threads.outputs.num }}
-             conan install ..  -s build_type=Release --profile gcc11
+             conan install .. --output-folder . --build missing --settings build_type=Release -o tests=True --profile gcc11
              cmake -DCMAKE_TOOLCHAIN_FILE:FILEPATH=build/generators/conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release .. 
              cmake --build . --parallel 4
 
@@ -78,7 +78,7 @@ jobs:
     steps:          
       - uses: actions/checkout@v4
         with:
-          repository: git@github.com:ripple/clio-configs.git
+          repository: ripple/clio-configs.git
           path: clio-configs
           ref: ${{ github.event.inputs.clio_config_branch ||  github.event.inputs.clio_config_commit }}
 
