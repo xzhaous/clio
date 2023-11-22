@@ -75,8 +75,9 @@ jobs:
   build_clio_config:
     name: Build Clio config
     runs-on: [self-hosted]
-    steps:          
-      - uses: actions/checkout@v4
+    steps:  
+      - name: build clio config
+        uses: actions/checkout@v4
         with:
           repository: ripple/clio-configs.git
           path: clio-configs
